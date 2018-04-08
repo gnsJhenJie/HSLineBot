@@ -85,11 +85,26 @@ bot.on('message', function (event) {
 				console.log('Error', error);
 			});
 	else if (event.message.type == "sticker")
-		event.reply("傳貼圖功能開發中~~\n求教學!").then(function (data) {
-			console.log('Success', data);
-		}).catch(function (error) {
-			console.log('Error', error);
-		});
+		if ( (event.message.packageId == "1") ||(event.message.packageId == "2") || (event.message.packageId == "3") ||(event.message.packageId == "4"))
+			event.reply({
+				type: 'sticker',
+				packageId: event.message.packageId,
+				stickerId: event.message.stickerId
+			}).then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});
+		else
+			event.reply({
+				type: 'sticker',
+				packageId: 1,
+				stickerId: 1
+			}).then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});			
 	else if (event.message.type == "audio")
 		event.reply("聽不懂ㄏㄏ").then(function (data) {
 			console.log('Success', data);
