@@ -1,0 +1,363 @@
+Microsoft Windows [Version 10.0.16299.334]
+(c) 2017 Microsoft Corporation. All rights reserved.
+
+C:\Users\jay33>heroku login
+Enter your Heroku credentials:
+Email: jay3315938@gmail.com
+Password: ***********************
+Logged in as jay3315938@gmail.com
+
+C:\Users\jay33>cd ./Documents
+
+C:\Users\jay33\Documents>cd ./linebot
+
+C:\Users\jay33\Documents\linebot>git init
+Reinitialized existing Git repository in C:/Users/jay33/Documents/linebot/.git/
+
+C:\Users\jay33\Documents\linebot>heroku git:remote -a linebot-programing
+set git remote heroku to https://git.heroku.com/linebot-programing.git
+
+C:\Users\jay33\Documents\linebot>git add .
+warning: LF will be replaced by CRLF in package.json.
+The file will have its original line endings in your working directory.
+
+C:\Users\jay33\Documents\linebot>git commit -am "First upload"
+[master b0aa896] First upload
+ 1 file changed, 19 deletions(-)
+ delete mode 100644 views/index_no.ejs
+
+C:\Users\jay33\Documents\linebot>git push heroku master
+Counting objects: 81, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (77/77), done.
+Writing objects: 100% (81/81), 12.30 KiB | 547.00 KiB/s, done.
+Total 81 (delta 44), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----> Node.js app detected
+remote:
+remote: -----> Creating runtime environment
+remote:
+remote:        NPM_CONFIG_LOGLEVEL=error
+remote:        NODE_VERBOSE=false
+remote:        NODE_ENV=production
+remote:        NODE_MODULES_CACHE=true
+remote:
+remote: -----> Installing binaries
+remote:        engines.node (package.json):  8.9.1
+remote:        engines.npm (package.json):   unspecified (use default)
+remote:
+remote:        Resolving node version 8.9.1...
+remote:        Downloading and installing node 8.9.1...
+remote:        Using default npm version: 5.5.1
+remote:
+remote: -----> Restoring cache
+remote:        Skipping cache restore (not-found)
+remote:
+remote: -----> Building dependencies
+remote:        Installing node modules (package.json)
+remote:        added 109 packages in 3.518s
+remote:
+remote: -----> Caching build
+remote:        Clearing previous node cache
+remote:        Saving 2 cacheDirectories (default):
+remote:        - node_modules
+remote:        - bower_components (nothing to cache)
+remote:
+remote: -----> Pruning devDependencies
+remote:        Skipping because npm 5.5.1 sometimes fails when running 'npm prune' due to a known issue
+remote:        https://github.com/npm/npm/issues/19356
+remote:
+remote:        You can silence this warning by updating to at least npm 5.7.1 in your package.json
+remote:        https://devcenter.heroku.com/articles/nodejs-support#specifying-an-npm-version
+remote:
+remote: -----> Build succeeded!
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote:
+remote: -----> Compressing...
+remote:        Done: 19.3M
+remote: -----> Launching...
+remote:        Released v6
+remote:        https://linebot-programing.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy... done.
+To https://git.heroku.com/linebot-programing.git
+ * [new branch]      master -> master
+
+C:\Users\jay33\Documents\linebot>heroku open
+
+C:\Users\jay33\Documents\linebot>git commit -am "Change reply to hi"
+[master 6d5aa24] Change reply to hi
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+C:\Users\jay33\Documents\linebot>git push heroku master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 303 bytes | 303.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----> Node.js app detected
+remote:
+remote: -----> Creating runtime environment
+remote:
+remote:        NPM_CONFIG_LOGLEVEL=error
+remote:        NODE_VERBOSE=false
+remote:        NODE_ENV=production
+remote:        NODE_MODULES_CACHE=true
+remote:
+remote: -----> Installing binaries
+remote:        engines.node (package.json):  8.9.1
+remote:        engines.npm (package.json):   unspecified (use default)
+remote:
+remote:        Resolving node version 8.9.1...
+remote:        Downloading and installing node 8.9.1...
+remote:        Using default npm version: 5.5.1
+remote:
+remote: -----> Restoring cache
+remote:        Loading 2 from cacheDirectories (default):
+remote:        - node_modules
+remote:        - bower_components (not cached - skipping)
+remote:
+remote: -----> Building dependencies
+remote:        Installing node modules (package.json)
+remote:        up to date in 0.808s
+remote:
+remote: -----> Caching build
+remote:        Clearing previous node cache
+remote:        Saving 2 cacheDirectories (default):
+remote:        - node_modules
+remote:        - bower_components (nothing to cache)
+remote:
+remote: -----> Pruning devDependencies
+remote:        Skipping because npm 5.5.1 sometimes fails when running 'npm prune' due to a known issue
+remote:        https://github.com/npm/npm/issues/19356
+remote:
+remote:        You can silence this warning by updating to at least npm 5.7.1 in your package.json
+remote:        https://devcenter.heroku.com/articles/nodejs-support#specifying-an-npm-version
+remote:
+remote: -----> Build succeeded!
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote:
+remote: -----> Compressing...
+remote:        Done: 19.3M
+remote: -----> Launching...
+remote:        Released v7
+remote:        https://linebot-programing.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy... done.
+To https://git.heroku.com/linebot-programing.git
+   b0aa896..6d5aa24  master -> master
+
+C:\Users\jay33\Documents\linebot>heroku open
+
+C:\Users\jay33\Documents\linebot>git commit -am "Reply two messages"
+[master 169ff1e] Reply two messages
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+C:\Users\jay33\Documents\linebot>git push heroku master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 337 bytes | 168.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----> Node.js app detected
+remote:
+remote: -----> Creating runtime environment
+remote:
+remote:        NPM_CONFIG_LOGLEVEL=error
+remote:        NODE_VERBOSE=false
+remote:        NODE_ENV=production
+remote:        NODE_MODULES_CACHE=true
+remote:
+remote: -----> Installing binaries
+remote:        engines.node (package.json):  8.9.1
+remote:        engines.npm (package.json):   unspecified (use default)
+remote:
+remote:        Resolving node version 8.9.1...
+remote:        Downloading and installing node 8.9.1...
+remote:        Using default npm version: 5.5.1
+remote:
+remote: -----> Restoring cache
+remote:        Loading 2 from cacheDirectories (default):
+remote:        - node_modules
+remote:        - bower_components (not cached - skipping)
+remote:
+remote: -----> Building dependencies
+remote:        Installing node modules (package.json)
+remote:        up to date in 0.792s
+remote:
+remote: -----> Caching build
+remote:        Clearing previous node cache
+remote:        Saving 2 cacheDirectories (default):
+remote:        - node_modules
+remote:        - bower_components (nothing to cache)
+remote:
+remote: -----> Pruning devDependencies
+remote:        Skipping because npm 5.5.1 sometimes fails when running 'npm prune' due to a known issue
+remote:        https://github.com/npm/npm/issues/19356
+remote:
+remote:        You can silence this warning by updating to at least npm 5.7.1 in your package.json
+remote:        https://devcenter.heroku.com/articles/nodejs-support#specifying-an-npm-version
+remote:
+remote: -----> Build succeeded!
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote:
+remote: -----> Compressing...
+remote:        Done: 19.3M
+remote: -----> Launching...
+remote:        Released v8
+remote:        https://linebot-programing.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy... done.
+To https://git.heroku.com/linebot-programing.git
+   6d5aa24..169ff1e  master -> master
+
+C:\Users\jay33\Documents\linebot>heroku open
+
+C:\Users\jay33\Documents\linebot>git commit -am "Add New Friend Message"
+[master 6d3ca8f] Add New Friend Message
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+C:\Users\jay33\Documents\linebot>git push heroku master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 357 bytes | 178.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----> Node.js app detected
+remote:
+remote: -----> Creating runtime environment
+remote:
+remote:        NPM_CONFIG_LOGLEVEL=error
+remote:        NODE_VERBOSE=false
+remote:        NODE_ENV=production
+remote:        NODE_MODULES_CACHE=true
+remote:
+remote: -----> Installing binaries
+remote:        engines.node (package.json):  8.9.1
+remote:        engines.npm (package.json):   unspecified (use default)
+remote:
+remote:        Resolving node version 8.9.1...
+remote:        Downloading and installing node 8.9.1...
+remote:        Using default npm version: 5.5.1
+remote:
+remote: -----> Restoring cache
+remote:        Loading 2 from cacheDirectories (default):
+remote:        - node_modules
+remote:        - bower_components (not cached - skipping)
+remote:
+remote: -----> Building dependencies
+remote:        Installing node modules (package.json)
+remote:        up to date in 0.766s
+remote:
+remote: -----> Caching build
+remote:        Clearing previous node cache
+remote:        Saving 2 cacheDirectories (default):
+remote:        - node_modules
+remote:        - bower_components (nothing to cache)
+remote:
+remote: -----> Pruning devDependencies
+remote:        Skipping because npm 5.5.1 sometimes fails when running 'npm prune' due to a known issue
+remote:        https://github.com/npm/npm/issues/19356
+remote:
+remote:        You can silence this warning by updating to at least npm 5.7.1 in your package.json
+remote:        https://devcenter.heroku.com/articles/nodejs-support#specifying-an-npm-version
+remote:
+remote: -----> Build succeeded!
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote:
+remote: -----> Compressing...
+remote:        Done: 19.3M
+remote: -----> Launching...
+remote:        Released v9
+remote:        https://linebot-programing.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy... done.
+To https://git.heroku.com/linebot-programing.git
+   169ff1e..6d3ca8f  master -> master
+
+C:\Users\jay33\Documents\linebot>heroku open
+
+C:\Users\jay33\Documents\linebot>git commit -am "Return to echo message only because tech problem"
+[master e62c7dd] Return to echo message only because tech problem
+ 1 file changed, 5 deletions(-)
+
+C:\Users\jay33\Documents\linebot>git push heroku master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 321 bytes | 321.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----> Node.js app detected
+remote:
+remote: -----> Creating runtime environment
+remote:
+remote:        NPM_CONFIG_LOGLEVEL=error
+remote:        NODE_VERBOSE=false
+remote:        NODE_ENV=production
+remote:        NODE_MODULES_CACHE=true
+remote:
+remote: -----> Installing binaries
+remote:        engines.node (package.json):  8.9.1
+remote:        engines.npm (package.json):   unspecified (use default)
+remote:
+remote:        Resolving node version 8.9.1...
+remote:        Downloading and installing node 8.9.1...
+remote:        Using default npm version: 5.5.1
+remote:
+remote: -----> Restoring cache
+remote:        Loading 2 from cacheDirectories (default):
+remote:        - node_modules
+remote:        - bower_components (not cached - skipping)
+remote:
+remote: -----> Building dependencies
+remote:        Installing node modules (package.json)
+remote:        up to date in 0.773s
+remote:
+remote: -----> Caching build
+remote:        Clearing previous node cache
+remote:        Saving 2 cacheDirectories (default):
+remote:        - node_modules
+remote:        - bower_components (nothing to cache)
+remote:
+remote: -----> Pruning devDependencies
+remote:        Skipping because npm 5.5.1 sometimes fails when running 'npm prune' due to a known issue
+remote:        https://github.com/npm/npm/issues/19356
+remote:
+remote:        You can silence this warning by updating to at least npm 5.7.1 in your package.json
+remote:        https://devcenter.heroku.com/articles/nodejs-support#specifying-an-npm-version
+remote:
+remote: -----> Build succeeded!
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote:
+remote: -----> Compressing...
+remote:        Done: 19.3M
+remote: -----> Launching...
+remote:        Released v10
+remote:        https://linebot-programing.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy... done.
+To https://git.heroku.com/linebot-programing.git
+   6d3ca8f..e62c7dd  master -> master
+
+C:\Users\jay33\Documents\linebot>heroku open
+
+C:\Users\jay33\Documents\linebot>git commit -am "Add New Friend Message"
