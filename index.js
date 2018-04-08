@@ -103,7 +103,7 @@ bot.on('message', function (event) {
 			console.log('Error', error);
 		});
 	else
-		event.reply("抱歉無法辨識您的message type!\n請聯絡管理員...\nSorry~").then(function (data) {
+		event.reply("抱歉無法辨識您的message type!\n請聯絡管理員...\nSorry~\n錯誤訊息:TYPE_ERR("+event.message.type+")").then(function (data) {
 			console.log('Success', data);
 		}).catch(function (error) {
 			console.log('Error', error);
