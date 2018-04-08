@@ -12,7 +12,7 @@ const app = express();
 const linebotParser = bot.parser();
 
 app.get('/',function(req,res){
-    res.send('Hello World!');
+    res.send('Hello World!\n~~LineBot正常運作中~~');
 });
 
 app.post('/linewebhook', linebotParser);
@@ -24,7 +24,7 @@ bot.on('message', function (event) {
 		}).catch(function (error) {
 			console.log('Error', error);
 		});
-	else if (event.message.text == "TNFSH")
+	else if ( (event.message.text == "TNFSH") || (event.message.text == "tnfsh") || (event.message.text == "Tnfsh") || (event.message.text == "臺南一中") || (event.message.text == "台南一中") || (event.message.text == "南一中") )
 		event.reply("好學校!").then(function (data) {
 			console.log('Success', data);
 		}).catch(function (error) {
@@ -56,6 +56,18 @@ bot.on('message', function (event) {
 		});
 	else if ( (event.message.text == "嘿!Siri") || (event.message.text == "Siri") || (event.message.text == "嘿!siri") || (event.message.test == "siri") || (event.message.text == "嘿!Siri!") || (event.message.test == "嘿!!siri!") )
 		event.reply("你當我TMD Siri?").then(function (data) {
+			console.log('Success', data);
+		}).catch(function (error) {
+			console.log('Error', error);
+		});
+	else if ( (event.message.text == "早安") || (event.message.text == "早") || (event.message.text == "早啊") || (event.message.text == "早安啊") )
+		event.reply("早安啊!").then(function (data) {
+			console.log('Success', data);
+		}).catch(function (error) {
+			console.log('Error', error);
+		});
+	else if ( (event.message.text == "晚安") || (event.message.text == "晚安啊") || (event.message.text == "Good night") )
+		event.reply("晚安!\n祝你有個好夢~").then(function (data) {
 			console.log('Success', data);
 		}).catch(function (error) {
 			console.log('Error', error);
