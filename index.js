@@ -107,7 +107,13 @@ bot.on('message', function (event) {
 			console.log('Success', data);
 		}).catch(function (error) {
 			console.log('Error', error);
-		});		
+		});
+	else if (event.message.type == "location")
+		event.reply(event.message.address+"\n這地方我大概沒去過吧!!\n可以帶我去嗎?").then(function (data) {
+			console.log('Success', data);
+		}).catch(function (error) {
+			console.log('Error', error);
+		});
 	else
 		event.reply("抱歉無法辨識您的message type!\n請聯絡管理員...\nSorry~\n錯誤訊息:TYPE_ERR("+event.message.type+")").then(function (data) {
 			console.log('Success', data);
