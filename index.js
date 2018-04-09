@@ -11,6 +11,12 @@ const app = express();
 
 const linebotParser = bot.parser();
 
+function getRandom(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+}
+
 app.get('/',function(req,res){
     res.send('Hello World!\t~~LineBot正常運作中~~');
 });
@@ -20,12 +26,51 @@ app.post('/linewebhook', linebotParser);
 bot.on('message', function (event) {
 	var msg = event.message.text.toLowerCase();
 	if ( event.message.type == "text" )
-		if ( (msg.indexOf('嗨') != -1 ) || (msg.indexOf('你好') != -1) || (msg.indexOf('hi') != -1) )
-			event.reply("哈囉!").then(function (data) {
-				console.log('Success', data);
-			}).catch(function (error) {
-				console.log('Error', error);
-			});
+		if ( (msg.indexOf('嗨') != -1 ) || (msg.indexOf('你好') != -1) || (msg.indexOf('hi') != -1) || (msg.indexOf('哈囉')) )
+			switch (getRandom(1,5)){
+			case 1:
+				event.reply("哈囉!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});			
+				break;
+			case 2:
+				event.reply("Hello!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});		
+				break;
+			case 3:
+				event.reply("嗨!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});		
+				break;
+			case 4:
+				event.reply("嗨嗨~").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				break;
+			case 5:
+				event.reply("不要跟我裝熟喔!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});		
+				break;
+			default:
+				event.reply("抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});		
+				break;
+			}			
 		else if (msg == "test")
 			event.reply("TEST Success!").then(function (data) {
 				console.log('Success', data);
