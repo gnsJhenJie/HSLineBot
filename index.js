@@ -26,7 +26,7 @@ app.post('/linewebhook', linebotParser);
 bot.on('message', function (event) {
 	var msg = event.message.text.toLowerCase();
 	if ( event.message.type == "text" )
-		if ( (msg.indexOf('嗨') != -1 ) || (msg.indexOf('你好') != -1) || (msg.indexOf('hi') != -1) || (msg.indexOf('哈囉')) )
+		if ( (msg.indexOf('嗨') != -1 ) || (msg.indexOf('你好') != -1) || (msg.indexOf('hi') != -1) || (msg.indexOf('哈囉') != -1) )
 			switch (getRandom(1,5)){
 			case 1:
 				event.reply("哈囉!").then(function (data) {
