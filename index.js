@@ -18,68 +18,109 @@ app.get('/',function(req,res){
 app.post('/linewebhook', linebotParser);
 
 bot.on('message', function (event) {
-	if (event.message.type == "text")
-		if ( (event.message.text == "嗨" ) || (event.message.text == "你好") || (event.message.text == "Hi") || (event.message.text == "hi") || (event.message.text == "Hi!") || (event.message.text == "HI") )
+	var msg = event.message.text.toLowerCase();
+	if ( event.message.type == "text" )
+		if ( (msg.indexOf('嗨') != -1 ) || (msg.indexOf('你好') != -1) || (msg.indexOf('hi') != -1) )
 			event.reply("哈囉!").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-		else if ( (event.message.text == "TNFSH") || (event.message.text == "tnfsh") || (event.message.text == "Tnfsh") || (event.message.text == "臺南一中") || (event.message.text == "台南一中") || (event.message.text == "南一中") )
-			event.reply("好學校!").then(function (data) {
+		else if (msg == "test")
+			event.reply("TEST Success!").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-		else if ( (event.message.text == "彩蛋") || (event.message.text == "gnsJhenJie") || (event.message.text == "gnsjhenjie") || (event.message.text == "Gnsjhenjie") || (event.message.text == "GnsJhenJie"))
+		else if ( (msg.indexOf('tnfsh') != -1 ) || (msg.indexOf('南一中') != -1 ) )
+			event.reply({
+				type: 'location',
+				title: '~臺南一中是好學校~',
+				address: '701台南市東區民族路一段1號',
+				latitude: 22.9941884,
+				longitude: 120.21599119999996
+				}).then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});
+		else if ( (msg == "彩蛋") || (msg == "gnsjhenjie") )
 			event.reply("Ya!!\n你找到彩蛋啦!!!\n然後......\n然後就沒有然後了").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-		else if ( (event.message.text == "幹") || (event.message.text == "幹你娘") )
+		else if ( (msg == "幹") || (msg.indexOf('幹你娘') != -1) )
 			event.reply("趕羚羊!\n操你媽derB").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-		else if ( (event.message.text == "教我C++") || (event.message.text == "教我c++") || (event.message.text == "C++大神") || (event.message.text == "c++大神") )
+		else if (msg.indexOf('c++') == "教我C++")
 			event.reply("我看你只是想抄作業吧!\n請到: https://www.github.com/gnsJhenJie/mycpp \n不要太感謝我喔!\n段考自己看著辦囉~").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-		else if ( (event.message.text == "root") || (event.message.text == "admin") || (event.message.text == "Root") || (event.message.text == "Admin") || (event.message.text == "Administrator") || (event.message.text == "administrator"))
+		else if ( (msg == "root") || (msg == "admin") || (msg == "root") || (msg == "administrator") )
 			event.reply("你以為這樣幹嘛?\nCTF打太多嗎?").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-		else if ( (event.message.text == "嘿!Siri") || (event.message.text == "Siri") || (event.message.text == "嘿!siri") || (event.message.test == "siri") || (event.message.text == "嘿!Siri!") || (event.message.test == "嘿!!siri!") )
+		else if ( msg.indexOf('siri') != -1 )
 			event.reply("你當我TMD Siri?").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-		else if ( (event.message.text == "早安") || (event.message.text == "早") || (event.message.text == "早啊") || (event.message.text == "早安啊") )
+		else if ( (msg.indexOf('早安') != -1) || (msg == "早") || (msg == "早啊") || ( msg.indexOf('morning') != -1 ) )
 			event.reply("早安啊!").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-		else if ( (event.message.text == "晚安") || (event.message.text == "晚安啊") || (event.message.text == "Good night") )
+		else if ( ( msg.indexOf('晚安') != -1) || (msg.indexOf('good night') != -1) )
 			event.reply("晚安!\n祝你有個好夢~").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
+		else if ( (msg.indexOf('滴妹') != -1 ) )
+			event.reply({
+				type: 'image',
+				originalContentUrl: 'https://jplay01.com/img/aaaaamVwu.jpg',
+				previewImageUrl: 'https://jplay01.com/img/aaaaamVwu.jpg'
+			}).then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});
+		else if ( (msg == "運勢") || (msg == "運氣") )
+			event.reply("功能開發中").then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});			
+			/*var randtemp = Math.random %2;
+			if (randomtemp == 0)(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+			else if (randomtemp == 1)
+				event.reply("運氣有些差呢!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});*/
 		else
 			/*event.reply(event.message.type).then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
 			});*/
-			event.reply("喔\n"+event.message.text).then(function (data) {
+			event.reply("喔\n"+msg).then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
@@ -104,7 +145,7 @@ bot.on('message', function (event) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
-			});			
+			});		
 	else if (event.message.type == "audio")
 		event.reply("聽不懂ㄏㄏ").then(function (data) {
 			console.log('Success', data);
