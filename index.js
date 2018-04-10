@@ -115,7 +115,7 @@ bot.on('message', function (event) {
                 });
                 break;
             }
-		else if ( (msg == "彩蛋") || (msg == "gnsjhenjie") )
+		else if ( (msg == "彩蛋") || (msg.indexOf('gnsjhenjie') != -1) )
 			event.reply("Ya!!\n你找到彩蛋啦!!!\n然後......\n然後就沒有然後了").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
@@ -133,7 +133,7 @@ bot.on('message', function (event) {
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-		else if ( (msg == "root") || (msg == "admin") || (msg == "root") || (msg == "administrator") )
+		else if ( (msg == 'root') || (msg == 'admin') || (msg == 'root') || (msg == 'administrator') )
 			event.reply("你以為這樣幹嘛?\nCTF打太多嗎?").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
