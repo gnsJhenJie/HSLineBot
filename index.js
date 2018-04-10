@@ -221,12 +221,126 @@ bot.on('message', function (event) {
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-		else if ( (msg == "運勢") || (msg == "運氣") )
-			event.reply("功能開發中").then(function (data) {
+		else if ( (msg.indexOf('運勢') != -1) || (msg.indexOf('運氣') != -1) || (msg.indexOf('fortune') != -1) )
+			switch (getRandom(1,15)){
+			case 1:
+				event.reply("今天的運勢真的很差很差呢!\n\n過馬路的時候多注意左右來車吧~\n凡事謹慎為上策!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				break;
+			case 2:
+				event.reply("今天的運勢還蠻差的喔><\n\n建議你做事前多想想!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				break;
+			case 3:
+				event.reply("今天你的運勢不太好喔...").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				break;
+			case 4:
+				event.reply("啊啊啊......\n\n我竟然沒辦法判斷你今天的運勢\n看來我的功力還不夠呢!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+				console.log('Error', error);
+				});
+				break;
+			case 5:
+				event.reply("今天你的運勢普普通通!!\n\n就照你平常的樣子吧!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+				console.log('Error', error);
+				});
+				break;
+			case 6:
+				event.reply("你今天的運勢....\n......  ....\n大概普普通通吧!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+				console.log('Error', error);
+				});
+				break;
+			case 7:
+				event.reply("今天的運勢還不錯喔喔喔喔喔~~~\n\n好好把握這些運氣吧!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+				console.log('Error', error);
+				});
+				break;
+			case 8:
+				event.reply("Hello, world!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+				console.log('Error', error);
+				});
+				break;
+			case 9:
+				event.reply("今天運勢很棒呢!!!\n\n分些運氣給我嘛~~").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+				console.log('Error', error);
+				});
+				break;
+			case 10:
+				event.reply("哇! 你的運氣好的不像話!!!!\n\n難道是我猜錯了嗎??").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+				console.log('Error', error);
+				});
+				break;
+			case 11:
+				event.reply("今天的運勢普普通通啦~~\n沒啥好說的~").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+				console.log('Error', error);
+				});
+				break;
+			case 12:
+				event.reply("我累啦...\n不幫你占卜囉~~").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+				console.log('Error', error);
+				});
+				break;
+			case 13:
+				event.reply("想知道今天的運勢嗎?\n先教些錢出來!!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+				console.log('Error', error);
+				});
+				break;
+			case 14:
+				event.reply("今天的天氣就跟你的運勢一樣呢!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+				console.log('Error', error);
+				});
+				break;
+			case 15:
+				event.reply("哈哈哈哈哈").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+				console.log('Error', error);
+				});
+				break;
+			default:
+				event.reply("抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});		
+				break;			
+				}
+			/*event.reply("功能開發中").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
-			});			
+			});	*/		
 			/*var randtemp = Math.random %2;
 			if (randomtemp == 0)(function (data) {
 					console.log('Success', data);
@@ -284,7 +398,7 @@ bot.on('message', function (event) {
 					console.log('Error', error);
 				});
 		else if (msg == 'help')
-			event.reply("          ~~使用說明~~\n公開功能:\n(1)查詢課表:\n輸入c+班級+星期\n例:c1041 (104班星期一)\n\n(2)早午安:\n可以跟bot說早午安喔喔喔~\n\n(3)關於本程式:\n輸入about\n\n其他的都是隱藏功能喔~\n自己研究研究吧!").then(function (data) {
+			event.reply("          ~~使用說明~~\n公開功能:\n(1)查詢課表:\n輸入c+班級+星期\n例:c1041 (104班星期一)\n\n(2)早午安:\n可以跟bot說早午安喔喔喔~\n\n(3)關於本程式:\n輸入about\n\n(4)本日運勢:\n輸入甚麼呢?自己試試看吧!(哈\n\n其他的都是隱藏功能喔~\n自己研究研究吧!").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
@@ -296,11 +410,6 @@ bot.on('message', function (event) {
 				console.log('Error', error);
 			});			
 		else
-			/*event.reply(event.message.type).then(function (data) {
-				console.log('Success', data);
-			}).catch(function (error) {
-				console.log('Error', error);
-			});*/
 			event.reply("喔\n"+event.message.text).then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
