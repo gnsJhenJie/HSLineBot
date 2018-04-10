@@ -108,6 +108,11 @@ bot.on('message', function (event) {
                 });
                 break;
             default:
+                event.reply("抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_").then(function (data) {
+                    console.log('Success', data);
+                }).catch(function (error) {
+                    console.log('Error', error);
+                });
                 break;
             }
 		else if ( (msg == "彩蛋") || (msg == "gnsjhenjie") )
@@ -116,13 +121,13 @@ bot.on('message', function (event) {
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-		else if ( (msg == "幹") || (msg.indexOf('幹你娘') != -1) )
-			event.reply("趕羚羊!\n操你媽derB").then(function (data) {
+		else if ( (msg == "幹") || (msg.indexOf('幹你娘') != -1) || (msg.indexOf('操你媽')) )
+            event.reply("趕羚羊!\n操你媽derB").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-		else if (msg.indexOf('c++') == "教我C++")
+		else if (msg.indexOf('c++') != -1)
 			event.reply("我看你只是想抄作業吧!\n請到: https://www.github.com/gnsJhenJie/mycpp \n不要太感謝我喔!\n段考自己看著辦囉~").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
@@ -140,7 +145,7 @@ bot.on('message', function (event) {
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-		else if ( (msg.indexOf('早安') != -1) || (msg == "早") || (msg == "早啊") || ( msg.indexOf('morning') != -1 ) )
+		else if ( (msg.indexOf('早安') != -1) || (msg == '早') || (msg == '早啊') || ( msg.indexOf('morning') != -1 ) )
 			event.reply("早安啊!").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
@@ -181,11 +186,6 @@ bot.on('message', function (event) {
 					console.log('Error', error);
 				});*/
 		else
-			/*event.reply(event.message.type).then(function (data) {
-				console.log('Success', data);
-			}).catch(function (error) {
-				console.log('Error', error);
-			});*/
 			event.reply("喔\n"+msg).then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
