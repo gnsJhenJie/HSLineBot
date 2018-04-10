@@ -24,7 +24,8 @@ app.get('/',function(req,res){
 app.post('/linewebhook', linebotParser);
 
 bot.on('message', function (event) {
-	var msg = event.message.text.toLowerCase();
+	var msg = event.message.text;
+    msg = msg.toLowerCase;
 	if ( event.message.type == "text" )
 		if ( (msg.indexOf('嗨') != -1 ) || (msg.indexOf('你好') != -1) || (msg.indexOf('hi') != -1) || (msg.indexOf('哈囉') != -1) )
 			switch (getRandom(1,5)){
@@ -78,17 +79,37 @@ bot.on('message', function (event) {
 				console.log('Error', error);
 			});
 		else if ( (msg.indexOf('tnfsh') != -1 ) || (msg.indexOf('南一中') != -1 ) )
-			event.reply({
-				type: 'location',
-				title: '~臺南一中是好學校~',
-				address: '701台南市東區民族路一段1號',
-				latitude: 22.9941884,
-				longitude: 120.21599119999996
-				}).then(function (data) {
-				console.log('Success', data);
-			}).catch(function (error) {
-				console.log('Error', error);
-			});
+            switch (getRandom(1,3)){
+            case 1:
+                event.reply({
+                    type: 'location',
+                    title: '~臺南一中是好學校~',
+                    address: '701台南市東區民族路一段1號',
+                    latitude: 22.9941884,
+                    longitude: 120.21599119999996
+                    }).then(function (data) {
+                    console.log('Success', data);
+                }).catch(function (error) {
+                    console.log('Error', error);
+                });
+                break;
+            case 2:
+                event.reply("https://www.tnfsh.tn.edu.tw").then(function (data) {
+                    console.log('Success', data);
+                }).catch(function (error) {
+                    console.log('Error', error);
+                });
+                break;
+            case 3:
+                event.reply("https://www.tnfsh.tn.edu.tw").then(function (data) {
+                    console.log('Success', data);
+                }).catch(function (error) {
+                    console.log('Error', error);
+                });
+                break;
+            default:
+                break;
+            }
 		else if ( (msg == "彩蛋") || (msg == "gnsjhenjie") )
 			event.reply("Ya!!\n你找到彩蛋啦!!!\n然後......\n然後就沒有然後了").then(function (data) {
 				console.log('Success', data);
