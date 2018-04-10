@@ -126,11 +126,91 @@ bot.on('message', function (event) {
 				console.log('Error', error);
 			});
 		else if ( ( msg.indexOf('晚安') != -1) || (msg.indexOf('good night') != -1) )
-			event.reply("晚安!\n祝你有個好夢~").then(function (data) {
+			switch (getRandom(1,10)){
+			case 1:
+				event.reply("晚安!\n祝你有個好夢~").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				break;
+			case 2:
+				event.reply("晚安!\n記得要開鬧鐘喔~").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				break;			
+			case 3:
+				event.reply("Good night!\nSweet dreams~").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				break;
+			case 4:
+				event.reply("晚安安~\n今天的星空也很美麗呢!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				break;			
+			case 5:
+				event.reply("Good night!\nSleep tight!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				break;			
+			case 6:
+				event.reply("晚安囉~\n今天好累啊...").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				break;			
+			case 7:
+				event.reply("祝好夢!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				break;				
+			case 8:
+				event.reply("希望今天你不會做惡夢>_<").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				break;
+			case 9:
+				event.reply("晚安!").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				break;			
+			case 10:
+				event.reply("晚安啊!\n作業寫完了嗎?").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				break;			
+			default:
+				event.reply("抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});		
+				break;		
+			}
+		else if (( msg.indexOf('午安') !=-1 ) || (msg.indexOf('good evening')!=-1) )
+			event.reply("午安!\n睡完午覺了嗎?").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
-			});
+			});			
 		else if ( (msg.indexOf('滴妹') != -1 ) )
 			event.reply({
 				type: 'image',
@@ -202,7 +282,19 @@ bot.on('message', function (event) {
 					console.log('Success', data);
 				}).catch(function (error) {
 					console.log('Error', error);
-				});							
+				});
+		else if (msg == 'help')
+			event.reply("          ~~使用說明~~\n公開功能:\n(1)查詢課表:\n輸入c+班級+星期\n例:c1041 (104班星期一)\n\n(2)早午安:\n可以跟bot說早午安喔喔喔~\n\n(3)關於本程式:\n輸入about\n\n其他的都是隱藏功能喔~\n自己研究研究吧!").then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});			
+		else if (msg == 'about')
+			event.reply("Author: gnsJhenJie\nGithub: gnsJhenJie\nVersion: 0.8.4.10").then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});			
 		else
 			/*event.reply(event.message.type).then(function (data) {
 				console.log('Success', data);
