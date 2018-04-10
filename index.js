@@ -16,7 +16,7 @@ function getRandom(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
 }
-
+const a1041 = '第一節  歷史\n第二節  公民\n第三節  生物\n第四節  生物\n第五節  化學\n第六節  地理\n第七節  數學\n第八節  國文'
 app.get('/',function(req,res){
     res.send('Hello World!\t~~LineBot正常運作中~~');
 });
@@ -24,10 +24,9 @@ app.get('/',function(req,res){
 app.post('/linewebhook', linebotParser);
 
 bot.on('message', function (event) {
-	var msg = event.message.text;
-    msg = msg.toLowerCase;
+	var msg = event.message.text.toLowerCase();
 	if ( event.message.type == "text" )
-		if ( (msg.indexOf('嗨') != -1 ) || (msg.indexOf('你好') != -1) || (msg.indexOf('hi') != -1) || (msg.indexOf('哈囉') != -1) )
+		if ( (msg.indexOf('嗨') != -1 ) || (msg.indexOf('你好') != -1) || (msg.indexOf('hi') != -1) || (msg.indexOf('哈囉')!=-1) )
 			switch (getRandom(1,5)){
 			case 1:
 				event.reply("哈囉!").then(function (data) {
@@ -79,61 +78,36 @@ bot.on('message', function (event) {
 				console.log('Error', error);
 			});
 		else if ( (msg.indexOf('tnfsh') != -1 ) || (msg.indexOf('南一中') != -1 ) )
-            switch (getRandom(1,3)){
-            case 1:
-                event.reply({
-                    type: 'location',
-                    title: '~臺南一中是好學校~',
-                    address: '701台南市東區民族路一段1號',
-                    latitude: 22.9941884,
-                    longitude: 120.21599119999996
-                    }).then(function (data) {
-                    console.log('Success', data);
-                }).catch(function (error) {
-                    console.log('Error', error);
-                });
-                break;
-            case 2:
-                event.reply("https://www.tnfsh.tn.edu.tw").then(function (data) {
-                    console.log('Success', data);
-                }).catch(function (error) {
-                    console.log('Error', error);
-                });
-                break;
-            case 3:
-                event.reply("https://www.tnfsh.tn.edu.tw").then(function (data) {
-                    console.log('Success', data);
-                }).catch(function (error) {
-                    console.log('Error', error);
-                });
-                break;
-            default:
-                event.reply("抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_").then(function (data) {
-                    console.log('Success', data);
-                }).catch(function (error) {
-                    console.log('Error', error);
-                });
-                break;
-            }
+			event.reply({
+				type: 'location',
+				title: '~臺南一中是好學校~',
+				address: '701台南市東區民族路一段1號',
+				latitude: 22.9941884,
+				longitude: 120.21599119999996
+				}).then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});
 		else if ( (msg == "彩蛋") || (msg.indexOf('gnsjhenjie') != -1) )
 			event.reply("Ya!!\n你找到彩蛋啦!!!\n然後......\n然後就沒有然後了").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-		else if ( (msg == "幹") || (msg.indexOf('幹你娘') != -1) || (msg.indexOf('操你媽')) )
-            event.reply("趕羚羊!\n操你媽derB").then(function (data) {
+		else if ( (msg == "幹") || (msg.indexOf('幹你娘') != -1) )
+			event.reply("趕羚羊!\n操你媽derB").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-		else if (msg.indexOf('c++') != -1)
+		else if (msg.indexOf('c++') == "教我C++")
 			event.reply("我看你只是想抄作業吧!\n請到: https://www.github.com/gnsJhenJie/mycpp \n不要太感謝我喔!\n段考自己看著辦囉~").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-		else if ( (msg == 'root') || (msg == 'admin') || (msg == 'root') || (msg == 'administrator') )
+		else if ( (msg == "root") || (msg == "admin") || (msg == "root") || (msg == "administrator") )
 			event.reply("你以為這樣幹嘛?\nCTF打太多嗎?").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
@@ -145,7 +119,7 @@ bot.on('message', function (event) {
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-		else if ( (msg.indexOf('早安') != -1) || (msg == '早') || (msg == '早啊') || ( msg.indexOf('morning') != -1 ) )
+		else if ( (msg.indexOf('早安') != -1) || (msg == "早") || (msg == "早啊") || ( msg.indexOf('morning') != -1 ) )
 			event.reply("早安啊!").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
@@ -185,8 +159,57 @@ bot.on('message', function (event) {
 				}).catch(function (error) {
 					console.log('Error', error);
 				});*/
+		else if ( msg[0] == 'c' )
+			if (msg.indexOf('104') != -1 )
+				if ( msg[4] == '1' )
+					event.reply("第一節  歷史\n第二節  公民\n第三節  生物\n第四節  生物\n第五節  化學\n第六節  地理\n第七節  數學\n第八節  國文\nFighting~~").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+				else if ( msg[4] == '2')
+					event.reply("第一節  資訊\n第二節  資訊\n第三節  公民\n第四節  英文\n第五節  國防\n第六節  體育\n第七節  國文\n第八節  音樂\n今天有資訊課呢!").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+				else if ( msg[4] == '3')
+					event.reply("第一節  生命教育\n第二節  美術\n第三節  國文\n第四節  國文\n第五節  班會\n第六節  班會\n第七節  化學\n第八節  英文\n加U!!!").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+				else if ( msg[4] == '4')
+					event.reply("第一節  文教\n第二節  國文\n第三節  英文\n第四節  英文\n第五節  歷史\n第六節  數學\n第七節  數學\n今天沒有第八節耶~~").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+				else if ( msg[4] == '5')
+					event.reply("第一節  選修\n第二節  選修\n第三節  英文\n第四節  數學\n第五節  地理\n第六節  體育\n第七節  數學\n準備放假囉!!!").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});			
+				else
+					event.reply("您的輸入錯誤!請輸入help查看使用說明").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+			else
+				event.reply("您的輸入錯誤!請輸入help查看使用說明").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});							
 		else
-			event.reply("喔\n"+msg).then(function (data) {
+			/*event.reply(event.message.type).then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});*/
+			event.reply("喔\n"+event.message.text).then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
@@ -231,11 +254,36 @@ bot.on('message', function (event) {
 			console.log('Error', error);
 		});
 	else if (event.message.type == "location")
-		event.reply(event.message.address+"\n這地方我大概沒去過吧!!\n可以帶我去嗎?").then(function (data) {
-			console.log('Success', data);
-		}).catch(function (error) {
-			console.log('Error', error);
-		});
+		switch (getRandom(1,3)){
+		case 1:	
+			event.reply(event.message.address+"\n這地方我大概沒去過吧!!\n可以帶我去嗎?").then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});
+			break;
+		case 2:
+			event.reply(event.message.address+"\n我好像有去過這裡呢!!\n不過似乎又沒有.....").then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});
+			break;
+		case 3:
+			event.reply(event.message.address+"\n是個有趣的地方呢!").then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});
+			break;
+		default:
+			event.reply("抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_location").then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});		
+			break;		
+		}
 	else
 		event.reply("抱歉無法辨識您的message type!\n請聯絡管理員...\nSorry~\n錯誤訊息:TYPE_ERR("+event.message.type+")").then(function (data) {
 			console.log('Success', data);
