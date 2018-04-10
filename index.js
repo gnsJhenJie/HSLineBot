@@ -24,8 +24,9 @@ app.get('/',function(req,res){
 app.post('/linewebhook', linebotParser);
 
 bot.on('message', function (event) {
-	var msg = event.message.text.toLowerCase();
-	if ( event.message.type == "text" )
+	var msg = 'message';
+	if ( event.message.type == "text" ){
+		msg = event.message.text.toLowerCase()
 		if ( (msg.indexOf('嗨') != -1 ) || (msg.indexOf('你好') != -1) || (msg.indexOf('hi') != -1) || (msg.indexOf('哈囉')!=-1) )
 			switch (getRandom(1,5)){
 			case 1:
@@ -415,7 +416,8 @@ bot.on('message', function (event) {
 			}).catch(function (error) {
 				console.log('Error', error);
 			});
-	else if (event.message.type == "sticker")
+	}
+	else if (event.message.type == "sticker"){
 		if ( (event.message.packageId == "1") ||(event.message.packageId == "2") || (event.message.packageId == "3") ||(event.message.packageId == "4"))
 			event.reply({
 				type: 'sticker',
@@ -436,25 +438,29 @@ bot.on('message', function (event) {
 			}).catch(function (error) {
 				console.log('Error', error);
 			});		
-	else if (event.message.type == "audio")
+	}
+	else if (event.message.type == "audio"){
 		event.reply("聽不懂ㄏㄏ").then(function (data) {
 			console.log('Success', data);
 		}).catch(function (error) {
 			console.log('Error', error);
 		});
-	else if (event.message.type == "image")
+	}
+	else if (event.message.type == "image"){
 		event.reply("傳圖片功能開發中~~\n求教學!").then(function (data) {
 			console.log('Success', data);
 		}).catch(function (error) {
 			console.log('Error', error);
 		});
-	else if (event.message.type == "file")
+	}
+	else if (event.message.type == "file"){
 		event.reply("我才不打開來路不明的檔案咧!\n我中毒了你要負責嗎?\n要讓我壞掉沒這麼容易的!!!").then(function (data) {
 			console.log('Success', data);
 		}).catch(function (error) {
 			console.log('Error', error);
 		});
-	else if (event.message.type == "location")
+	}
+	else if (event.message.type == "location"){
 		switch (getRandom(1,3)){
 		case 1:	
 			event.reply(event.message.address+"\n這地方我大概沒去過吧!!\n可以帶我去嗎?").then(function (data) {
@@ -485,12 +491,14 @@ bot.on('message', function (event) {
 			});		
 			break;		
 		}
-	else
+	}
+	else{
 		event.reply("抱歉無法辨識您的message type!\n請聯絡管理員...\nSorry~\n錯誤訊息:TYPE_ERR("+event.message.type+")").then(function (data) {
 			console.log('Success', data);
 		}).catch(function (error) {
 			console.log('Error', error);
 		});		
+	}
 });
 bot.on('join', function (event) {
 	event.reply("Hello! 歡迎新朋友!").then(function (data) {
