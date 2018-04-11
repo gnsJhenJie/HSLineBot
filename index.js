@@ -25,13 +25,6 @@ app.post('/linewebhook', linebotParser);
 
 bot.on('message', function (event) {
 	var msg = 'message';
-	/*var time = event.timestamp;
-	time = new Date(time);
-	var hour = time.getHours;
-	var shour = hour.toString();
-	var stime = time.toString();
-	var months = "一月,二月,三月,四月,五月,六月,七月,八月,九月,十月,十一月,十二月".split(",");
-	var weekdays = "星期日,星期一,星期二,星期三,星期四,星期五,星期六".split(",");	*/
 	var Today = new Date();
 	var yyyy = Today.getFullYear(); //年
 	var MM = Today.getMonth()+1;    //月
@@ -94,7 +87,7 @@ bot.on('message', function (event) {
 				});		
 				break;
 			}			
-		}else if (msg == "test"){
+		}else if (msg == 'test'){
 			event.reply("TEST Success!").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
@@ -214,207 +207,327 @@ bot.on('message', function (event) {
 				break;				
 			}
 		}else if ( (msg.indexOf('早安') != -1) || (msg == '早') || (msg == '早啊') || ( msg.indexOf('morning') != -1 ) ){
-			switch (getRandom(1,7)){
-			case 1:
-				event.reply("早安啊!").then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});
-				break;
-			case 2:
-				event.reply("Good morning~").then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});
-				break;				
-			case 3:
-				event.reply("早安!").then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});
-				break;
-			case 4:
-				event.reply("Bonjour").then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});
-				break;			
-			case 5:
-				event.reply("歐嗨喲~").then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});
-				break;
-			case 6:
-				event.reply({
-					type: 'sticker',
-					packageId: 1,
-					stickerId: 2
-				}).then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});			
-				break;
-			case 7:
-				event.reply({
-					type: 'sticker',
-					packageId: 1,
-					stickerId: 137
-				}).then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});		
-				break;
-			default:
-				event.reply("抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_").then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});		
-				break;					
+			if ((h>5)&&(h<10)){
+				switch (getRandom(1,7)){
+				case 1:
+					event.reply("早安啊!").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+					break;
+				case 2:
+					event.reply("Good morning~").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+					break;				
+				case 3:
+					event.reply("早安!").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+					break;
+				case 4:
+					event.reply("Bonjour").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+					break;			
+				case 5:
+					event.reply("歐嗨喲~").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+					break;
+				case 6:
+					event.reply({
+						type: 'sticker',
+						packageId: 1,
+						stickerId: 2
+					}).then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});			
+					break;
+				case 7:
+					event.reply({
+						type: 'sticker',
+						packageId: 1,
+						stickerId: 137
+					}).then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;
+				default:
+					event.reply("抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;					
+				}
+			}else{
+				switch (getRandom(1,4)){
+				case 1:
+					event.reply('時間不早了吧....').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;								
+				case 2:
+					event.reply('你他媽是腦子有洞是不是啊?\n現在都幾點了?\n早甚麼早啊?').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;									
+				case 3:
+					event.reply('早什麼?\n老子都不老子了!').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;
+				case 4:
+					event.reply('希望你腦袋沒有洞....').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;		
+				default:
+					event.reply('抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_morning').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;						
+				}
 			}
 		}else if ( ( msg.indexOf('晚安') != -1) || (msg.indexOf('good night') != -1) ){
-			switch (getRandom(1,11)){
-			case 1:
-				event.reply("晚安!\n祝你有個好夢~").then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});
-				break;
-			case 2:
-				event.reply("晚安!\n記得要開鬧鐘喔~").then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});
-				break;			
-			case 3:
-				event.reply("Good night!\nSweet dreams~").then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});
-				break;
-			case 4:
-				event.reply("晚安安~\n今天的星空也很美麗呢!").then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});
-				break;			
-			case 5:
-				event.reply("Good night!\nSleep tight!").then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});
-				break;			
-			case 6:
-				event.reply("晚安囉~\n今天好累啊...").then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});
-				break;			
-			case 7:
-				event.reply("祝好夢!").then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});
-				break;				
-			case 8:
-				event.reply("希望今天你不會做惡夢>_<").then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});
-				break;
-			case 9:
-				event.reply("晚安!").then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});
-				break;			
-			case 10:
-				event.reply("晚安啊!\n作業寫完了嗎?").then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});
-				break;			
-			case 11:
-				event.reply({
-					type: 'sticker',
-					packageId: 2,
-					stickerId: 26
-				}).then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});					
-				break;
-			default:
-				event.reply("抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_").then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});		
-				break;		
+			if ((h>18)||(h<3)){
+				switch (getRandom(1,11)){
+				case 1:
+					event.reply("晚安!\n祝你有個好夢~").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+					break;
+				case 2:
+					event.reply("晚安!\n記得要開鬧鐘喔~").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+					break;			
+				case 3:
+					event.reply("Good night!\nSweet dreams~").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+					break;
+				case 4:
+					event.reply("晚安安~\n今天的星空也很美麗呢!").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+					break;			
+				case 5:
+					event.reply("Good night!\nSleep tight!").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+					break;			
+				case 6:
+					event.reply("晚安囉~\n今天好累啊...").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+					break;			
+				case 7:
+					event.reply("祝好夢!").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+					break;				
+				case 8:
+					event.reply("希望今天你不會做惡夢>_<").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+					break;
+				case 9:
+					event.reply("晚安!").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+					break;			
+				case 10:
+					event.reply("晚安啊!\n作業寫完了嗎?").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});
+					break;			
+				case 11:
+					event.reply({
+						type: 'sticker',
+						packageId: 2,
+						stickerId: 26
+					}).then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});					
+					break;
+				default:
+					event.reply("抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;	
+				}
+			}else{
+				switch (getRandom(1,4)){
+				case 1:
+					event.reply('現在是幾點啊....').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;								
+				case 2:
+					event.reply('你他媽是腦子有洞是不是啊?\n現在都幾點了?\n晚你妹的!').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;									
+				case 3:
+					event.reply('晚什麼?\n老子都不老子了!').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;
+				case 4:
+					event.reply('希望你腦袋沒有洞....').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;		
+				default:
+					event.reply('抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_morning').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;						
+				}				
 			}
 		}else if (( msg.indexOf('午安') !=-1 ) || (msg.indexOf('good evening')!=-1) ){
-			switch (getRandom(1,5)){
-			case 1:
-				event.reply('午安!\n睡完午覺了嗎?').then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});			
-				break;
-			case 2:
-				event.reply('午餐好吃嗎?\n我肚子好餓啊....').then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});			
-				break;				
-			case 3:
-				event.reply('午安!').then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});			
-				break;			
-			case 4:
-				event.reply('Good evening!').then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});			
-				break;						
-			case 5:
-				event.reply('加油!\n再半天就放學了~~').then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});			
-				break;					
-			default:
-				event.reply('抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_').then(function (data) {
-					console.log('Success', data);
-				}).catch(function (error) {
-					console.log('Error', error);
-				});		
-				break;				
+			if ((h>10)&&(h<16)){
+				switch (getRandom(1,5)){
+				case 1:
+					event.reply('午安!\n睡完午覺了嗎?').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});			
+					break;
+				case 2:
+					event.reply('午餐好吃嗎?\n我肚子好餓啊....').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});			
+					break;				
+				case 3:
+					event.reply('午安!').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});			
+					break;			
+				case 4:
+					event.reply('Good evening!').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});			
+					break;						
+				case 5:
+					event.reply('加油!\n再半天就放學了~~').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});			
+					break;					
+				default:
+					event.reply('抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;				
+				}
+			}else{
+				switch (getRandom(1,4)){
+				case 1:
+					event.reply('現在是幾點啊....').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;								
+				case 2:
+					event.reply('你他媽是腦子有洞是不是啊?\n現在都幾點了?\n晚你妹的!').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;									
+				case 3:
+					event.reply('晚什麼?\n老子都不老子了!').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;
+				case 4:
+					event.reply('希望你腦袋沒有洞....').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;		
+				default:
+					event.reply('抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_morning').then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;						
+				}			
 			}
 		}else if (msg == '時間'){
 			event.reply(yyyy+'年'+MM+'月'+dd+'日'+h+'時'+m+'分'+' 星期'+week).then(function (data) {
@@ -639,14 +752,14 @@ bot.on('message', function (event) {
 		}else if ((msg == '明日課表')||(msg == '明天課表')){
 			switch (week+1){
 			case 1:
-				event.reply("第一節  歷史\n第二節  公民\n第三節  生物\n第四節  生物\n第五節  化學\n第六節  地理\n第七節  數學\n第八節  國文\nFighting~~").then(function (data) {
+				event.reply("第一節  歷史\n第二節  公民\n第三節  生物\n第四節  生物\n第五節  化學\n第六節  地理\n第七節  數學\n第八節  國文\n明天記得起床喔!").then(function (data) {
 					console.log('Success', data);
 				}).catch(function (error) {
 					console.log('Error', error);
 				});			
 				break;
 			case 2:
-				event.reply("第一節  資訊\n第二節  資訊\n第三節  公民\n第四節  英文\n第五節  國防\n第六節  體育\n第七節  國文\n第八節  音樂\n今天有資訊課呢!").then(function (data) {
+				event.reply("第一節  資訊\n第二節  資訊\n第三節  公民\n第四節  英文\n第五節  國防\n第六節  體育\n第七節  國文\n第八節  音樂\n明天有資訊課呢!").then(function (data) {
 					console.log('Success', data);
 				}).catch(function (error) {
 					console.log('Error', error);
@@ -660,7 +773,7 @@ bot.on('message', function (event) {
 				});				
 				break;
 			case 4:
-				event.reply("第一節  文教\n第二節  國文\n第三節  英文\n第四節  英文\n第五節  歷史\n第六節  數學\n第七節  數學\n今天沒有第八節耶~~").then(function (data) {
+				event.reply("第一節  文教\n第二節  國文\n第三節  英文\n第四節  英文\n第五節  歷史\n第六節  數學\n第七節  數學\n明天沒有第八節耶~~").then(function (data) {
 					console.log('Success', data);
 				}).catch(function (error) {
 					console.log('Error', error);
