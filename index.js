@@ -866,11 +866,36 @@ bot.on('message', function (event) {
 				console.log('Error', error);
 			});								
 		}else{
-			event.reply("喔\n"+event.message.text).then(function (data) {
-				console.log('Success', data);
-			}).catch(function (error) {
-				console.log('Error', error);
-			});
+			switch (getRandom(1,3)){
+			case 1:
+				event.reply("喔\n"+event.message.text).then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				break;
+			case 2:
+				event.reply("是喔\n"+event.message.text).then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				break;	
+			case 3:
+				event.reply(event.message.text+'\n顯然地,這是句廢話!').then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				break;			
+			default:
+				event.reply("抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_replyUnrecog").then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});		
+				break;						
+			}
 		}
 	}
 	else if (event.message.type == "sticker"){
