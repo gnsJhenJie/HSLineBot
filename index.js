@@ -27,7 +27,9 @@ app.post('/linewebhook', linebotParser);
 
 bot.on('message', function (event) {
 	var MGNgroupId = 'C306d9846c600bf25360a8ad54655b9f4';
-	var msg = event.message.text.toLowerCase();
+	if (event.message.type == 'text'){
+		var msg = event.message.text.toLowerCase();
+	}
 	if (event.source.groupId != MGNgroupId){
 		var addMember = false;
 		var Today = new Date();
