@@ -1,3 +1,5 @@
+//gnsJhenJie Copyright.
+
 const linebot = require('linebot');
 const express = require('express');
 
@@ -24,7 +26,9 @@ app.get('/',function(req,res){
 app.post('/linewebhook', linebotParser);
 
 bot.on('message', function (event) {
+	var addMember = false;
 	var msg = 'message';
+	var MGNgroupId = 'C306d9846c600bf25360a8ad54655b9f4';
 	var Today = new Date();
 	var yyyy = Today.getFullYear(); //年
 	var MM = Today.getMonth()+1;    //月
@@ -864,7 +868,37 @@ bot.on('message', function (event) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
-			});								
+			});
+		}else if (msg.indexOf('加入會員')!=-1){
+			event.reply('感謝您加入會員,我們將於72hr內確認您的申請').then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});			
+			var sendMsg = '~~新會員加入申請~~\n\nuserId: '+event.source.userId+'\nmessage: '+event.message.text;
+			bot.push(MGNgroupId,sendMsg);
+			console.log('send: '+sendMsg);
+		}else if (msg.indexOf('聯絡管理員')!=-1){
+			event.reply('我們已收到您的訊息,我們將盡速回覆您!').then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});			
+			var sendMsg = '~~聯絡管理員~~\n\nuserId: '+event.source.userId+'\nmessage: '+event.message.text;
+			bot.push(MGNgroupId,sendMsg);
+			console.log('send: '+sendMsg);			
+		}else if (msg == 'userid'){
+			event.reply(event.source.userId).then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});
+		}else if (msg == 'groupid'){
+			event.reply(event.source.groupId).then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});			
 		}else{
 			switch (getRandom(1,3)){
 			case 1:
@@ -1052,7 +1086,27 @@ bot.on('message', function (event) {
 			console.log('Error', error);
 		});		
 	}
+	if (event.source.type == 'room'){
+		var sendMsg = 'roomId: '+event.source.roomId+'\nuserId: '+event.source.userId;
+		bot.push(MGNgroupId,sendMsg);
+		console.log('send: '+sendMsg);	
+	}else if (event.source.type == 'user'){
+		var sendMsg = 'userId: '+event.source.userId;
+		bot.push(MGNgroupId,sendMsg);
+		console.log('send: '+sendMsg);
+	}else if (event.source.type == 'group'){
+		var sendMsg = 'groupId: '+event.source.groupId+'\nuserId: '+event.source.userId;
+		bot.push(MGNgroupId,sendMsg);
+		console.log('send: '+sendMsg);		
+	}
+
 });
+setTimeout(function(){
+    var groupId = 'C306d9846c600bf25360a8ad54655b9f4';
+    var sendMsg = '管理員通知:bot重啟完成';
+    bot.push(groupId,sendMsg);
+    console.log('send: '+sendMsg);
+},5000);
 bot.on('join', function (event) {
 	event.reply("Hello! 歡迎新朋友!").then(function (data) {
 		console.log('Success', data);
