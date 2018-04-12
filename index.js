@@ -1091,9 +1091,15 @@ bot.on('message', function (event) {
 			bot.push(MGNgroupId,sendMsg);
 			console.log('send: '+sendMsg);	
 		}else if (event.source.type == 'user'){
-			var sendMsg = 'userId: '+event.source.userId;
-			bot.push(MGNgroupId,sendMsg);
-			console.log('send: '+sendMsg);
+			switch (event.source.userId){
+				case 'Ucb700b5731e9de42f3fbd0da34811009':
+					break;
+				default:
+				var sendMsg = 'userId: '+event.source.userId;
+				bot.push(MGNgroupId,sendMsg);
+				console.log('send: '+sendMsg);
+				break;
+			}
 		}else if (event.source.type == 'group'){
 			var sendMsg = 'groupId: '+event.source.groupId+'\nuserId: '+event.source.userId;
 			bot.push(MGNgroupId,sendMsg);
