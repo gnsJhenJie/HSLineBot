@@ -31,6 +31,9 @@ bot.on('message', function (event) {
 	var msg = event.message.text;
 	}
 	if (event.source.groupId != MGNgroupId){
+		var memberId =["Ucb700b5731e9de42f3fbd0da34811009","U70b7fa75c36a675ef91a8aefb067abd9","U9df8bf8b782462d85c01f9470a74a5ca"];
+		var memberName = ["振杰","冠銘","楊翊"];
+		var memberNickname = ["gnsJhenJie","Trout","馬演葛格"];
 		msg = msg.toLowerCase();
 		var addMember = false;
 		var Today = new Date();
@@ -41,6 +44,16 @@ bot.on('message', function (event) {
 		var m = Today.getMinutes();     //分
 		//var s = Today.getSeconds();     //秒
 		var week = Today.getDay();     //星期幾
+		var id ='id';
+		var name = "";
+		var nickname = "";
+		if (event.source.type == 'user'){
+			id = event.source.userId;
+			name = memberName[memberId.indexOf(id)];
+			nickname = memberNickname[memberId.indexOf(id)];
+		}else if (event.source.type == 'group'){
+			id = event.source.groupId;
+		}
 		if (h+8>=24){
 			dd+=1;
 			h=h-16;
@@ -50,16 +63,16 @@ bot.on('message', function (event) {
 		}
 		if ( event.message.type == 'text' ){
 			if ( (msg.indexOf('嗨') != -1 ) || (msg.indexOf('你好') != -1) || (msg.indexOf('hi') != -1) ){
-				switch (getRandom(1,5)){
+				switch (getRandom(1,7)){
 				case 1:
-					event.reply("哈囉!").then(function (data) {
+					event.reply(name+"哈囉!").then(function (data) {
 						console.log('Success', data);
 					}).catch(function (error) {
 						console.log('Error', error);
 					});			
 					break;
 				case 2:
-					event.reply("Hello!").then(function (data) {
+					event.reply("Hello!"+nickname+"!").then(function (data) {
 						console.log('Success', data);
 					}).catch(function (error) {
 						console.log('Error', error);
@@ -81,6 +94,20 @@ bot.on('message', function (event) {
 					break;
 				case 5:
 					event.reply("不要跟我裝熟喔!").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});		
+					break;
+				case 6:
+					event.reply("哈囉!").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});			
+					break;
+				case 7:
+					event.reply("Hello!").then(function (data) {
 						console.log('Success', data);
 					}).catch(function (error) {
 						console.log('Error', error);
@@ -1168,11 +1195,6 @@ bot.on('message', function (event) {
 			}).catch(function (error) {
 				console.log('Error', error);
 			});					
-			/*event.reply("功能開發中").then(function (data) {
-				console.log('Success', data);
-			}).catch(function (error) {
-				console.log('Error', error);
-			});			*/
 		}
 	}
 });
