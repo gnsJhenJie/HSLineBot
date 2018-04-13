@@ -34,7 +34,6 @@ bot.on('message', function (event) {
 		var memberId =["Ucb700b5731e9de42f3fbd0da34811009","U70b7fa75c36a675ef91a8aefb067abd9","U9df8bf8b782462d85c01f9470a74a5ca"];
 		var memberName = ["振杰","冠銘","楊翊"];
 		var memberNickname = ["gnsJhenJie","Trout","馬演葛格"];
-		msg = msg.toLowerCase();
 		var addMember = false;
 		var Today = new Date();
 		var yyyy = Today.getFullYear(); //年
@@ -62,6 +61,7 @@ bot.on('message', function (event) {
 			h=h+8;
 		}
 		if ( event.message.type == 'text' ){
+			msg = msg.toLowerCase();			
 			if ( (msg.indexOf('嗨') != -1 ) || (msg.indexOf('你好') != -1) || (msg.indexOf('hi') != -1) ){
 				switch (getRandom(1,7)){
 				case 1:
@@ -694,6 +694,20 @@ bot.on('message', function (event) {
 					});		
 					break;			
 					}
+			}else if (msg == 'member'){
+				if (name == ""){
+					event.reply("您不是會員").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});							
+				}else{
+					event.reply("您是會員").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});								
+				}
 			}else if ( msg[0] == 'c' ){
 				if (msg.indexOf('104') != -1 )
 					if ( msg[4] == '1' )
@@ -857,7 +871,7 @@ bot.on('message', function (event) {
 					break;					
 				}
 			}else if (msg == 'help'){
-			event.reply("          ~~使用說明~~\n公開功能:\n(1)查詢課表:\n輸入c+班級+星期\n例:c1041 (104班星期一) 或 今日/明日課表\n\n(2)早午安:\n可以跟bot說早午安喔喔喔~\n\n(3)關於本程式:\n輸入about\n\n(4)本日運勢:\n輸入甚麼呢?自己試試看吧!\n\n(5)會員功能:\n目前此個人化功能開發中,歡迎先加入會員\n加入會員方法:\n輸入: 加入會員+姓名+暱稱+生日+班級\n\n(6)聯絡管理員:\n訊息中包含「聯絡管理員」即可\n\n(7)查看隱私權政策:\n輸入policy\n\n其他的都是隱藏功能喔~\n自己研究研究吧!").then(function (data) {
+			event.reply("          ~~使用說明~~\n公開功能:\n(1)查詢課表:\n輸入c+班級+星期\n例:c1041 (104班星期一) 或 今日/明日課表\n\n(2)早午安:\n可以跟bot說早午安喔喔喔~\n\n(3)關於本程式:\n輸入about\n\n(4)本日運勢:\n輸入甚麼呢?自己試試看吧!\n\n(5)會員功能:\n目前此個人化功能開發中,歡迎先加入會員\n加入會員方法:\n輸入: 加入會員+姓名+暱稱+生日+班級\n\n(6)聯絡管理員:\n訊息中包含「聯絡管理員」即可\n\n(7)查看隱私權政策:\n輸入policy\n\n(8)確認會員資格:\n輸入member\n\n其他的都是隱藏功能喔~\n自己研究研究吧!").then(function (data) {
 					console.log('Success', data);
 				}).catch(function (error) {
 					console.log('Error', error);
@@ -1167,6 +1181,8 @@ bot.on('message', function (event) {
 				case 'U244cc21319e97055a6470b8d3d8391ff':
 					break;
 				case 'Ue7c606c98bb9bac41b74d91f936a0d84':
+					break;
+				case 'Ub07acba225868a33eb6d7d744a421074':
 					break;
 				default:
 					var sendMsg = 'userId: '+event.source.userId;
