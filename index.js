@@ -28,9 +28,10 @@ app.post('/linewebhook', linebotParser);
 bot.on('message', function (event) {
 	var MGNgroupId = 'C306d9846c600bf25360a8ad54655b9f4';
 	if (event.message.type == 'text'){
-		var msg = event.message.text.toLowerCase();
+	var msg = event.message.text;
 	}
 	if (event.source.groupId != MGNgroupId){
+		msg = msg.toLowerCase();
 		var addMember = false;
 		var Today = new Date();
 		var yyyy = Today.getFullYear(); //年
@@ -835,7 +836,7 @@ bot.on('message', function (event) {
 					console.log('Error', error);
 				});			
 			}else if (msg == 'about'){
-				event.reply("Author: gnsJhenJie\nGithub: gnsJhenJie\nVersion: 0.8.4.10").then(function (data) {
+				event.reply("Author: gnsJhenJie\nGithub: gnsJhenJie\nVersion: 1.8.4.13").then(function (data) {
 					console.log('Success', data);
 				}).catch(function (error) {
 					console.log('Error', error);
@@ -918,7 +919,7 @@ bot.on('message', function (event) {
 				bot.push(MGNgroupId,sendMsg);
 				console.log('send: '+sendMsg);
 			}else if (msg == 'policy'){
-				event.reply('Q:管理員看得到我傳送的訊息嗎?\nAns:除了包含「加入會員」或「聯絡管理員」的訊息,其餘訊息管理員將不會記錄其內容\n\nQ:管理員知道我有發送訊息嗎?\nAns:第一次發送訊息後(需為2018/4/13日之後發送)3~5個工作日後,管理員不會紀錄發送訊息的紀錄\n\nQ:有關加入會員\nAns:加入會員後管理員可以對您主動對您發送訊息,但紀錄您的訊息規則同前述').then(function (data) {
+				event.reply('Q:管理員看得到我傳送的訊息嗎?\nAns:除了包含「加入會員」或「聯絡管理員」的訊息,其餘訊息管理員將不會記錄其內容\n\nQ:管理員知道我有發送訊息嗎?\nAns:第一次發送訊息後(需為2018/4/13日之後發送)3~5個工作日後,管理員不會紀錄發送訊息的紀錄\n\nQ:有關加入會員\nAns:申請加入會員(或聯絡管理員)後管理員可以對您主動對您發送訊息,但紀錄您的訊息規則同前述\n\n本隱私權政策以最新版為主').then(function (data) {
 					console.log('Success', data);
 				}).catch(function (error) {
 					console.log('Error', error);
@@ -1138,6 +1139,8 @@ bot.on('message', function (event) {
 					break;
 				case 'U244cc21319e97055a6470b8d3d8391ff':
 					break;
+				case 'Ue7c606c98bb9bac41b74d91f936a0d84':
+					break;
 				default:
 					var sendMsg = 'userId: '+event.source.userId;
 					bot.push(MGNgroupId,sendMsg);
@@ -1155,12 +1158,21 @@ bot.on('message', function (event) {
 		[USERID]
 		message
 		*/
-		if (msg.indexOf('sent')!=-1){
-			event.reply("功能開發中").then(function (data) {
+		if (msg.indexOf('sent')==0){
+			var command = event.message.text;
+			var destination = command.substring(command.indexOf("\n")+1,command.lastIndexOf("\n"));
+			var message = command.slice(command.lastIndexOf("\n")+1);			
+			bot.push(destination,message);
+			event.reply("發送訊息成功!\n對象:\n"+destination+"\n訊息:"+message).then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
 				console.log('Error', error);
-			});			
+			});					
+			/*event.reply("功能開發中").then(function (data) {
+				console.log('Success', data);
+			}).catch(function (error) {
+				console.log('Error', error);
+			});			*/
 		}
 	}
 });
