@@ -741,12 +741,26 @@ bot.on('message', function (event) {
 					});				
 					break;
 				case 5:
-						event.reply("第一節  選修\n第二節  選修\n第三節  英文\n第四節  數學\n第五節  地理\n第六節  體育\n第七節  數學\n準備放假囉!!!").then(function (data) {
+					event.reply("第一節  選修\n第二節  選修\n第三節  英文\n第四節  數學\n第五節  地理\n第六節  體育\n第七節  數學\n準備放假囉!!!").then(function (data) {
 						console.log('Success', data);
 					}).catch(function (error) {
 						console.log('Error', error);
 					});					
 					break;
+				case 6:
+					event.reply("今天星期六喔!\n你該不會去學校了吧...").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});					
+					break;				
+				case 7:
+					event.reply("今天星期日.....\n我不會被你騙的!!").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});					
+					break;									
 				default:
 					event.reply("抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_todayClass").then(function (data) {
 						console.log('Success', data);
@@ -757,13 +771,6 @@ bot.on('message', function (event) {
 				}
 			}else if ((msg == '明日課表')||(msg == '明天課表')){
 				switch (week+1){
-				case 1:
-					event.reply("第一節  歷史\n第二節  公民\n第三節  生物\n第四節  生物\n第五節  化學\n第六節  地理\n第七節  數學\n第八節  國文\n明天記得起床喔!").then(function (data) {
-						console.log('Success', data);
-					}).catch(function (error) {
-						console.log('Error', error);
-					});			
-					break;
 				case 2:
 					event.reply("第一節  資訊\n第二節  資訊\n第三節  公民\n第四節  英文\n第五節  國防\n第六節  體育\n第七節  國文\n第八節  音樂\n明天有資訊課呢!").then(function (data) {
 						console.log('Success', data);
@@ -786,12 +793,33 @@ bot.on('message', function (event) {
 					});				
 					break;
 				case 5:
-						event.reply("第一節  選修\n第二節  選修\n第三節  英文\n第四節  數學\n第五節  地理\n第六節  體育\n第七節  數學\n準備放假囉!!!").then(function (data) {
+					event.reply("第一節  選修\n第二節  選修\n第三節  英文\n第四節  數學\n第五節  地理\n第六節  體育\n第七節  數學\n準備放假囉!!!").then(function (data) {
 						console.log('Success', data);
 					}).catch(function (error) {
 						console.log('Error', error);
 					});					
 					break;
+				case 6:
+					event.reply("明天放假!!!\n有爽到嗎?").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});					
+					break;
+				case 7:
+					event.reply("明天是星期日....\n你腦袋沒有洞吧...").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});			
+					break;							
+				case 8:
+					event.reply("第一節  歷史\n第二節  公民\n第三節  生物\n第四節  生物\n第五節  化學\n第六節  地理\n第七節  數學\n第八節  國文\n明天記得起床喔!").then(function (data) {
+						console.log('Success', data);
+					}).catch(function (error) {
+						console.log('Error', error);
+					});			
+					break;				
 				default:
 					event.reply("抱歉我似乎出了bug!\n請聯絡管理員...\nSorry~\n錯誤訊息:RAND_SWITCH_ERR_todayClass").then(function (data) {
 						console.log('Success', data);
