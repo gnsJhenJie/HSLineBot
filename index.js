@@ -829,7 +829,7 @@ bot.on('message', function (event) {
 					break;					
 				}
 			}else if (msg == 'help'){
-				event.reply("          ~~使用說明~~\n公開功能:\n(1)查詢課表:\n輸入c+班級+星期\n例:c1041 (104班星期一)\n\n(2)早午安:\n可以跟bot說早午安喔喔喔~\n\n(3)關於本程式:\n輸入about\n\n(4)本日運勢:\n輸入甚麼呢?自己試試看吧!(哈\n\n其他的都是隱藏功能喔~\n自己研究研究吧!").then(function (data) {
+			event.reply("          ~~使用說明~~\n公開功能:\n(1)查詢課表:\n輸入c+班級+星期\n例:c1041 (104班星期一) 或 今日/明日課表\n\n(2)早午安:\n可以跟bot說早午安喔喔喔~\n\n(3)關於本程式:\n輸入about\n\n(4)本日運勢:\n輸入甚麼呢?自己試試看吧!\n\n(5)會員功能:\n目前此個人化功能開發中,歡迎先加入會員\n加入會員方法:\n輸入: 加入會員+姓名+暱稱+生日+班級\n\n(6)聯絡管理員:\n訊息中包含「聯絡管理員」即可\n\n(7)查看隱私權政策:\n輸入policy\n\n其他的都是隱藏功能喔~\n自己研究研究吧!").then(function (data) {
 					console.log('Success', data);
 				}).catch(function (error) {
 					console.log('Error', error);
@@ -916,7 +916,13 @@ bot.on('message', function (event) {
 				});			
 				var sendMsg = '~~聯絡管理員~~\n\nuserId: '+event.source.userId+'\nmessage: '+event.message.text;
 				bot.push(MGNgroupId,sendMsg);
-				console.log('send: '+sendMsg);			
+				console.log('send: '+sendMsg);
+			}else if (msg == 'policy'){
+				event.reply('Q:管理員看得到我傳送的訊息嗎?\nAns:除了包含「加入會員」或「聯絡管理員」的訊息,其餘訊息管理員將不會記錄其內容\n\nQ:管理員知道我有發送訊息嗎?\nAns:第一次發送訊息後(需為2018/4/13日之後發送)3~5個工作日後,管理員不會紀錄發送訊息的紀錄\n\nQ:有關加入會員\nAns:加入會員後管理員可以對您主動對您發送訊息,但紀錄您的訊息規則同前述').then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});							
 			}else if (msg == 'userid'){
 				event.reply(event.source.userId).then(function (data) {
 					console.log('Success', data);
@@ -1124,11 +1130,19 @@ bot.on('message', function (event) {
 			switch (event.source.userId){
 				case 'Ucb700b5731e9de42f3fbd0da34811009':
 					break;
+				case 'U9df8bf8b782462d85c01f9470a74a5ca':
+					break;
+				case 'U70b7fa75c36a675ef91a8aefb067abd9':
+					break;
+				case 'U6d712ea00dfa51179acca23f571ac754':
+					break;
+				case 'U244cc21319e97055a6470b8d3d8391ff':
+					break;
 				default:
-				var sendMsg = 'userId: '+event.source.userId;
-				bot.push(MGNgroupId,sendMsg);
-				console.log('send: '+sendMsg);
-				break;
+					var sendMsg = 'userId: '+event.source.userId;
+					bot.push(MGNgroupId,sendMsg);
+					console.log('New Frienf\nsend: '+sendMsg);
+					break;
 			}
 		}else if (event.source.type == 'group'){
 			var sendMsg = 'groupId: '+event.source.groupId+'\nuserId: '+event.source.userId;
@@ -1141,7 +1155,7 @@ bot.on('message', function (event) {
 		[USERID]
 		message
 		*/
-		if (msg.indexOf('sent')=0){
+		if (msg.indexOf('sent')!=-1){
 			event.reply("功能開發中").then(function (data) {
 				console.log('Success', data);
 			}).catch(function (error) {
