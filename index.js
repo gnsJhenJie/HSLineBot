@@ -226,7 +226,7 @@ bot.on('message', function (event) {
 					});
 					break;			
 				case 3:
-					event.reply('我不時Siri.....').then(function (data) {
+					event.reply('我不是Siri.....').then(function (data) {
 						console.log('Success', data);
 					}).catch(function (error) {
 						console.log('Error', error);
