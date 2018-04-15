@@ -1187,7 +1187,7 @@ bot.on('message', function (event) {
 				default:
 					var sendMsg = 'userId: '+event.source.userId;
 					bot.push(MGNgroupId,sendMsg);
-					console.log('New Frienf\nsend: '+sendMsg);
+					console.log('New Friend\nsend: '+sendMsg);
 					break;
 			}
 		}else if (event.source.type == 'group'){
