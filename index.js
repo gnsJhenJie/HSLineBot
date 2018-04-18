@@ -53,16 +53,23 @@ bot.on('message', function (event) {
 		}else if (event.source.type == 'group'){
 			id = event.source.groupId;
 		}
+		if (week==0){
+			week=7;
+		}
 		if (h+8>=24){
 			dd+=1;
 			h=h-16;
 			week+=1;
+			if (week>7){
+				week =1;
+			}
 		}else{
 			h=h+8;
 		}
+		console.log(week);
 		if ( event.message.type == 'text' ){
 			msg = msg.toLowerCase();			
-			if ( (msg.indexOf('嗨') != -1 ) || (msg.indexOf('你好') != -1) || (msg.indexOf('hi') != -1) ){
+			if ( (msg.indexOf('嗨') != -1 ) || (msg.indexOf('你好') != -1) || (msg.indexOf('hi') != -1) ||(msg.indexOf('hello')!=-1)){
 				switch (getRandom(1,7)){
 				case 1:
 					event.reply(name+"哈囉!").then(function (data) {
@@ -191,6 +198,16 @@ bot.on('message', function (event) {
 					});		
 					break;				
 				}
+			}else if (((msg.indexOf('.jpg')!=-1)||(msg.indexOf('.jpeg')!=-1))&&(msg.indexOf('https://')!=-1)){
+				event.reply({
+					type: 'image',
+					originalContentUrl: event.message.text,
+					previewImageUrl: event.message.text
+				}).then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});					
 			}else if ( (msg == "彩蛋") || (msg.indexOf('gnsjhenjie') != -1) ){
 				event.reply("Ya!!\n你找到彩蛋啦!!!\n然後......\n然後就沒有然後了").then(function (data) {
 					console.log('Success', data);
@@ -871,7 +888,7 @@ bot.on('message', function (event) {
 					break;					
 				}
 			}else if (msg == 'help'){
-			event.reply("          ~~使用說明~~\n公開功能:\n(1)查詢課表:\n輸入c+班級+星期\n例:c1041 (104班星期一) 或 今日/明日課表\n\n(2)早午安:\n可以跟bot說早午安喔喔喔~\n\n(3)關於本程式:\n輸入about\n\n(4)本日運勢:\n輸入甚麼呢?自己試試看吧!\n\n(5)會員功能:\n目前此個人化功能開發中,歡迎先加入會員\n加入會員方法:\n輸入: 加入會員+姓名+暱稱+生日+班級\n\n(6)聯絡管理員:\n訊息中包含「聯絡管理員」即可\n\n(7)查看隱私權政策:\n輸入policy\n\n(8)確認會員資格:\n輸入member\n\n其他的都是隱藏功能喔~\n自己研究研究吧!").then(function (data) {
+			event.reply("          ~~使用說明~~\n公開功能:\n(1)查詢課表:\n輸入c+班級+星期\n例:c1041 (104班星期一) 或 今日/明日課表\n\n(2)早午安:\n可以跟bot說早午安喔喔喔~\n\n(3)關於本程式:\n輸入about\n\n(4)本日運勢:\n輸入甚麼呢?自己試試看吧!\n\n(5)會員功能:\n目前此個人化功能開發中,歡迎先加入會員\n加入會員方法:\n輸入: 加入會員+姓名+暱稱+生日+班級\n\n(6)聯絡管理員:\n訊息中包含「聯絡管理員」即可\n\n(7)查看隱私權政策:\n輸入policy\n\n(8)確認會員資格:\n輸入member\n\n(9)加入使用者改善計畫:\n輸入join即可\n\n其他的都是隱藏功能喔~\n自己研究研究吧!").then(function (data) {
 					console.log('Success', data);
 				}).catch(function (error) {
 					console.log('Error', error);
@@ -940,7 +957,7 @@ bot.on('message', function (event) {
 					console.log('Success', data);
 				}).catch(function (error) {
 					console.log('Error', error);
-				});
+				});				
 			}else if (msg.indexOf('加入會員')!=-1){
 				event.reply('感謝您加入會員,我們將於72hr內確認您的申請').then(function (data) {
 					console.log('Success', data);
@@ -959,8 +976,18 @@ bot.on('message', function (event) {
 				var sendMsg = '~~聯絡管理員~~\n\nuserId: '+event.source.userId+'\nmessage: '+event.message.text;
 				bot.push(MGNgroupId,sendMsg);
 				console.log('send: '+sendMsg);
+			}else if (msg.indexOf('加入使用者改善計畫')!=-1){
+				event.reply('感謝您加入使用者改善計畫!').then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});
+				bot.push(event.source.userId,"若您要退出請聯絡管理員!");
+				var sendMsg = '~~加入使用者改善計畫~~\n\nuserId: '+event.source.userId+'\nmessage: '+event.message.text;
+				bot.push(MGNgroupId,sendMsg);
+				console.log('send: '+sendMsg);
 			}else if (msg == 'policy'){
-				event.reply('Q:管理員看得到我傳送的訊息嗎?\nAns:除了包含「加入會員」或「聯絡管理員」的訊息,其餘訊息管理員將不會記錄其內容\n\nQ:管理員知道我有發送訊息嗎?\nAns:第一次發送訊息後(需為2018/4/13日之後發送)3~5個工作日後,管理員不會紀錄發送訊息的紀錄\n\nQ:有關加入會員\nAns:申請加入會員(或聯絡管理員)後管理員可以對您主動對您發送訊息,但紀錄您的訊息規則同前述\n\n本隱私權政策以最新版為主').then(function (data) {
+				event.reply('<<本政策不適用參與使用者改善計畫用戶>>\nQ:管理員看得到我傳送的訊息嗎?\nAns:除了包含「加入會員」或「聯絡管理員」的訊息,其餘訊息管理員將不會記錄其內容\n\nQ:管理員知道我有發送訊息嗎?\nAns:第一次發送訊息後(需為2018/4/13日之後發送)3~5個工作日後,管理員不會紀錄發送訊息的紀錄\n\nQ:有關加入會員\nAns:申請加入會員(或聯絡管理員)後管理員可以對您主動對您發送訊息,但紀錄您的訊息規則同前述\n\n本隱私權政策以最新版為主').then(function (data) {
 					console.log('Success', data);
 				}).catch(function (error) {
 					console.log('Error', error);
@@ -976,7 +1003,13 @@ bot.on('message', function (event) {
 					console.log('Success', data);
 				}).catch(function (error) {
 					console.log('Error', error);
-				});			
+				});		
+			}else if (msg == 'week'){
+				event.reply(week).then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});						
 			}else{
 				switch (getRandom(1,3)){
 				case 1:
@@ -1035,11 +1068,67 @@ bot.on('message', function (event) {
 			}
 		}
 		else if (event.message.type == "audio"){
-			event.reply("聽不懂ㄏㄏ").then(function (data) {
-				console.log('Success', data);
-			}).catch(function (error) {
-				console.log('Error', error);
-			});
+			bot.push(event.source.userId,"我目前還在這個階段...");
+			console.log('pushed message');
+			switch (getRandom(1,5)){
+			case 1:
+				event.reply({
+					type: 'audio',
+					originalContentUrl: "https://www.gnsjhenjie.me/botaudio/doraa.m4a",
+					duration: 56000
+				}).then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});		
+				break;
+			case 2:
+				event.reply({
+					type: 'audio',
+					originalContentUrl: "https://www.gnsjhenjie.me/botaudio/diego.m4a",
+					duration: 60000
+				}).then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});		
+				break;
+			case 3:
+				event.reply({
+					type: 'audio',
+					originalContentUrl: "https://www.gnsjhenjie.me/botaudio/Thomas.m4a",
+					duration: 56000
+				}).then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});	
+				break;
+			case 4:
+				event.reply({
+					type: 'audio',
+					originalContentUrl: "https://www.gnsjhenjie.me/botaudio/doranew.m4a",
+					duration: 40000
+				}).then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});	
+				break;
+			case 5:
+				event.reply({
+					type: 'audio',
+					originalContentUrl: "https://www.gnsjhenjie.me/botaudio/doraa.m4a",
+					duration: 56000
+				}).then(function (data) {
+					console.log('Success', data);
+				}).catch(function (error) {
+					console.log('Error', error);
+				});	
+				break;
+			default:
+				break;
+			}
 		}
 		else if (event.message.type == "image"){
 			switch (getRandom(1,5)){
